@@ -11,7 +11,12 @@ esac
 shift 2
 done
 mkdir -p "$bckf"
-find $inpf -name "*.$ext" -exec cp '{}' ./$bckf \;
-tar -zcf $bckar $bckf
+#find $inpf -name "*.$ext" -exec cp -p {} ./$bckf \;
+for filename in `find $inpf -name "*.$ext" -print`
+do
+     newFileName=${filename//"/"/-}
+     cp $filename $bckf/$newFileName
+done
+#tar -zcf $bckar $bckf
 
 echo done
