@@ -9,7 +9,7 @@ execute_process(
 
 set(SOURCE_EXE ${PROJECT_SOURCE_DIR}/C/main.cpp)
 
-include_directories(${PROJECT_SOURCE_DIR}/A)
+include_directories(${PROJECT_SOURCE_DIR})
 
 add_subdirectory(${PROJECT_SOURCE_DIR}/B ${PROJECT_SOURCE_DIR}/lib)
 
