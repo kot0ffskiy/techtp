@@ -1,1 +1,1 @@
-void hello();
+int sum(int, int);

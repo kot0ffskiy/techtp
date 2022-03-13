@@ -1,3 +1,7 @@
 f = open("index.h", "w")
-f.write("void prt();\n")
+f.write('''struct index
+{
+    int ind = 0;
+};
+    ''')
 f.close()
