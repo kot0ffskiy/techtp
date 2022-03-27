@@ -9,5 +9,5 @@ TEST(structTest, IsIndZero)
 
 TEST(funTest, IsItNine)
 {
-    EXPECT_EQ(13, sum(4, 9));
+    EXPECT_EQ(13, summa(4, 9));
 }

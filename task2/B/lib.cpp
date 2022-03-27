@@ -1,5 +1,5 @@
 #include "lib.h"
-int sum(int a, int b)
+int summa(int a, int b)
 {
 	return a + b;
 }

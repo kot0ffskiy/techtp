@@ -1,1 +1,2 @@
-int sum(int, int);
+#pragma once
+int summa(int, int);
