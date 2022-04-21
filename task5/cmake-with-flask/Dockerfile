@@ -1,5 +1,5 @@
 FROM ubuntu
-RUN groupadd -r proj && useradd -r -g proj tp2022user
+RUN groupadd -r proj && useradd -r -g proj techproguser
 WORKDIR /PROJECT
 COPY . .
 RUN apt-get update && \
