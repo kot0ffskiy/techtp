@@ -1,5 +1,6 @@
 FROM ubuntu
-RUN groupadd -r proj && useradd -r -g proj tp2022user
+RUN groupadd -r proj && useradd -m -s -r -g proj tp2022user
+USER tp2022user
 WORKDIR /opt/techprog
 COPY . .
 RUN apt-get update && \
