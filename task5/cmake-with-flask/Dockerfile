@@ -1,7 +1,6 @@
 FROM ubuntu
-RUN groupadd -r proj && useradd -m -s /bin/bash -r -g proj techproguser
+COPY . /opt/techprog
 WORKDIR /opt/techprog
-COPY . .
 RUN apt-get update && \
     apt-get install -y \
         g++ \
@@ -9,3 +8,5 @@ RUN apt-get update && \
         cmake \
     && \
     cmake . && make
+RUN useradd -m -s /bin/bash tp2022user
+USER tp2022user
