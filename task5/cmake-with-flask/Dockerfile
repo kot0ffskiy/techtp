@@ -1,9 +1,10 @@
 #--Flask--
 FROM python
+COPY app.py /opt/techprog
 RUN pip install flask
 RUN pip install argumentparser
 ENTRYPOINT [ "python3" ]
-CMD ["app.py", "--port", "8898", "--host", "0.0.0.0"]
+CMD ["/opt/techprog/app.py", "--port", "8898", "--host", "0.0.0.0"]
 
 #--CMake--
 FROM ubuntu
