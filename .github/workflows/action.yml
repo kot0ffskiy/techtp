@@ -40,7 +40,7 @@ jobs:
         tar -cz -f test-report.tar.gz report.xml
     # Uploading directories "bin" and "lib" as an artifact
     - name: UploadArtifacts
-      uses: akhtyamovpavel/ActionGtestReport@v0.0.9
+      uses: actions/upload-artifact@v1
       with:
         name: Distributive
         path: task6/result/exe
