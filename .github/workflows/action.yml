@@ -1,0 +1,29 @@
+
+name: CI
+
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the master branch
+on:
+  push:
+    branches: [ master, task6 ]
+  pull_request:
+    branches: [ master, task6 ]
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  main-job:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build
+    run: |
+      cd task6
+      mkdir 3rdparty && cd 3rdparty
+      git clone https://github.com/google/googletest.git 
+      cd .. 
+      DIRPATH=$(pwd)
+      mkdir bins
+      mkdir testing && cd testing
+      cmake -DCMAKE_INSTALL_PREFIX=${DIRPATH}/bins ..
+      make
+      make install
