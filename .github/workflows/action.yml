@@ -32,3 +32,9 @@ jobs:
         exec-path: bin/CTestExe
         report-path: report.xml
         working-directory: task6/
+    
+    - name: Test
+      run: |
+        cd task6
+        tar -zfc test-report.tar.gz report.xml
+        
