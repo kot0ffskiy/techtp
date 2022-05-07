@@ -27,3 +27,8 @@ jobs:
         cmake -DCMAKE_INSTALL_PREFIX=${DIRPATH}/bins ..
         make
         make install
+    - uses: akhtyamovpavel/ActionGtestReport@v0.0.9
+      with:
+        exec-path: bin/CTestExe
+        report-path: report.xml
+        working-directory: task6/
