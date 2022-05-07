@@ -15,14 +15,14 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Build
-    run: |
-      cd task6
-      mkdir 3rdparty && cd 3rdparty
-      git clone https://github.com/google/googletest.git 
-      cd .. 
-      DIRPATH=$(pwd)
-      mkdir bins
-      mkdir testing && cd testing
-      cmake -DCMAKE_INSTALL_PREFIX=${DIRPATH}/bins ..
-      make
-      make install
+      run: |
+        cd task6
+        mkdir 3rdparty && cd 3rdparty
+        git clone https://github.com/google/googletest.git 
+        cd .. 
+        DIRPATH=$(pwd)
+        mkdir bins
+        mkdir testing && cd testing
+        cmake -DCMAKE_INSTALL_PREFIX=${DIRPATH}/bins ..
+        make
+        make install
