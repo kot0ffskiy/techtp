@@ -36,5 +36,5 @@ jobs:
     - name: Test
       run: |
         cd task6
-        tar -zfc test-report.tar.gz report.xml
+        tar -cz -f test-report.tar.gz report.xml
         
