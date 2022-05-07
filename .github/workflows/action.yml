@@ -1,7 +1,7 @@
 name: CI
 
 # Controls when the action will run. Triggers the workflow on push or pull request
-# events but only for the master branch
+# events but only for the master and task6 branch
 on:
   push:
     branches: [ master, task6 ]
@@ -14,6 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+    # Building CMake Project
     - name: Build
       run: |
         cd task6
@@ -32,9 +33,14 @@ jobs:
         exec-path: bin/CTestExe
         report-path: report.xml
         working-directory: task6/
-    
+    # Creating archive with report.xml
     - name: Test
       run: |
         cd task6
         tar -cz -f test-report.tar.gz report.xml
-        
+    # Uploading directories "bin" and "lib" as an artifact
+    - name: UploadArtifacts
+    - uses: akhtyamovpavel/ActionGtestReport@v0.0.9
+      with:
+        name: Distributive
+        path: task6/result/exe
