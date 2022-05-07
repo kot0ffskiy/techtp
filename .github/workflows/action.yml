@@ -17,11 +17,10 @@ jobs:
     - name: Build
       run: |
         cd task6
-        mkdir 3rdparty && cd 3rdparty
+        mkdir 3rdparty
         git clone https://github.com/google/googletest.git
-        mv -r googletest .
-        rm -r googletest
-        cd .. 
+        mv googletest/* 3rdparty/
+        rm -r googletest 
         DIRPATH=$(pwd)
         mkdir bins
         mkdir testing && cd testing
