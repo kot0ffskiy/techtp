@@ -33,14 +33,16 @@ jobs:
         exec-path: bin/CTestExe
         report-path: report.xml
         working-directory: task6/
+    
     # Creating archive with report.xml
     - name: Test
       run: |
         cd task6
         tar -cz -f test-report.tar.gz report.xml
+    
     # Uploading directories "bin" and "lib" as an artifact
     - name: UploadArtifacts
       uses: actions/upload-artifact@v1
       with:
         name: Distributive
-        path: task6/result/exe
+        path: task6/result/exe/
