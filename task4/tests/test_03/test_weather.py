@@ -1,10 +1,14 @@
 from weather_03.weather_wrapper import WeatherWrapper, FORECAST_URL
 from pytest import raises
+from os import environ
 
+
+# Token inizializartion
+token = environ.get("API_TOKEN")
 
 def test_weather():
     city = 'Argentina'
-    param = WeatherWrapper('6c61ac3fbc096259ffbbf97334d9b754')
+    param = WeatherWrapper(token)
     func = param.get_tomorrow_diff(city)
     tom_temp = param.get_tomorrow_temperature(city) 
     tod_temp = param.get_temperature(city)
