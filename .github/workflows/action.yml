@@ -1,0 +1,48 @@
+name: CI
+
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the master and task6 branch
+on:
+  push:
+    branches: [ master, task6 ]
+  pull_request:
+    branches: [ master, task6 ]
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  main-job:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    # Building CMake Project
+    - name: Build
+      run: |
+        cd task6
+        mkdir 3rdparty
+        git clone https://github.com/google/googletest.git
+        mv googletest/* 3rdparty/
+        rm -r googletest 
+        DIRPATH=$(pwd)
+        mkdir bins
+        mkdir testing && cd testing
+        cmake -DCMAKE_INSTALL_PREFIX=${DIRPATH}/bins ..
+        make
+        make install
+    - uses: akhtyamovpavel/ActionGtestReport@v0.0.9
+      with:
+        exec-path: bin/CTestExe
+        report-path: report.xml
+        working-directory: task6/
+    
+    # Creating archive with report.xml
+    - name: Test
+      run: |
+        cd task6
+        tar -cz -f test-report.tar.gz report.xml
+    
+    # Uploading directories "bin" and "lib" as an artifact
+    - name: UploadArtifacts
+      uses: actions/upload-artifact@v1
+      with:
+        name: Distributive
+        path: task6/bins/exe/
